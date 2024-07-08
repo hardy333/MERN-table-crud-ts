@@ -66,7 +66,7 @@ const Home = () => {
   };
 
   const queryClient = useQueryClient();
-  const { mutate, isPending, isSuccess, isError } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: postTableForm,
     onSuccess: (data) => {
       console.log("Suuccess", data);

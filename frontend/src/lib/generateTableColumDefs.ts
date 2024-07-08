@@ -9,6 +9,7 @@ const generateTableColumDefs = (table: Table | undefined) => {
     enableColumnFilter: false,
     enableColumnFilters: false,
     enableFilters: false,
+    // @ts-expect-error  ...
     accessorFn: (originalRow: unknown, index: number) => {
       return index;
     },

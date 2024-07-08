@@ -14,10 +14,7 @@ import {
 } from "@tanstack/react-table";
 
 import {
-  Pagination,
-  PaginationContent,
   PaginationEllipsis,
-  PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
@@ -32,8 +29,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "./ui/input";
 import DebouncedInput from "./DebounceInput";
 import ReactPaginate from "react-paginate";
 
@@ -72,7 +67,7 @@ export function DataTable<TData, TValue>({
     onPaginationChange: setPagination,
   });
 
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     console.log(event);
     console.log(table.getState().pagination.pageIndex);
     table.setPageIndex(event.selected);
