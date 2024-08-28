@@ -68,12 +68,10 @@ export function DataTable<TData, TValue>({
   });
 
   const handlePageClick = (event: { selected: number }) => {
-    console.log(event);
-    console.log(table.getState().pagination.pageIndex);
     table.setPageIndex(event.selected);
   };
 
-  console.log(table.getAllColumns());
+  // console.log(table.getAllColumns());
   return (
     <>
       {/* Global Filter */}

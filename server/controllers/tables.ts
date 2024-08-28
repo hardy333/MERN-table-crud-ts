@@ -38,8 +38,33 @@ const addNewTable = asyncWrapper(async (req: Request, res: Response) => {
   res.status(201).json(newTable);
 });
 
+const deleteTable = asyncWrapper(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const deletedTable = await Table.findOneAndDelete({ _id: id });
+  res.status(200).json(deletedTable);
+});
+
+const updateTable = asyncWrapper(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  console.log({ id, data });
+
+  const t = await Table.findOne({ _id: id });
+  // t.tableName
+
+  t.name = data.tableName;
+
+  console.log({ t });
+
+  const x = await Table.findOneAndUpdate({ _id: id }, t);
+  res.status(200).json(x);
+});
+
 export default {
   addNewTable,
   getAllTables,
   getSingleTable,
+  deleteTable,
+  updateTable,
 };

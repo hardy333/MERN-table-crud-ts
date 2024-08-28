@@ -25,6 +25,7 @@ import tablesAPI from "@/api/tablesAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
+
 type FormData = {
   tableName: string;
   tableColumn: {
@@ -60,12 +61,14 @@ const Home = () => {
     name: "tableColumn",
     control,
   });
+
   const postTableForm = async (formData: FormData) => {
     const res = await tablesAPI.post("/", formData);
     return res;
   };
 
   const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
     mutationFn: postTableForm,
     onSuccess: (data) => {
@@ -132,7 +135,6 @@ const Home = () => {
             <h2>Field Name</h2>
             <h2>Type</h2>
             <h2 className="col-span-2">Nulability</h2>
-
             {/* Dynamic FOrm START */}
             {/* Dynamic FOrm START */}
 
